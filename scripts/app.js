@@ -1,21 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
+
     const input = document.getElementById("input");
     const btnAdd = document.getElementById("btn-add");
     const ul = document.getElementById("li-container");
     const empty = document.getElementById("Empty");
     const userLabel = document.getElementById("user");
+    const loginLink = document.getElementById('login');
 
     // Verificar si hay un usuario logeado
     let currentUser = localStorage.getItem('currentUser');
     if (!currentUser) {
-        userLabel.textContent = "Invitado";
-    }else{
-            // Mostrar el nombre de usuario en el label
-    userLabel.textContent = `Hola, ${currentUser}`;
+        currentUser = "Invitado"
+    }
+    // Mostrar el nombre de usuario en el label
+            if (currentUser && currentUser !== 'Invitado') {
+                userLabel.textContent = `Bienvenido, ${currentUser}`;
+                loginLink.textContent = 'Log out';
+                loginLink.href = 'logout.html';
+            } else {
+                userLabel.textContent = 'Invitado';
+                loginLink.textContent = 'Login';
+                loginLink.href = 'login.html';
+            }
 
     // Cargar tareas guardadas en localStorage para el usuario logeado
     loadTasks();
-    }
 
     // Añadir tarea al presionar Enter
     input.addEventListener("keydown", (e) => {
@@ -62,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         li.appendChild(p);
         li.appendChild(divBtns);
-
+        if(!task.completed)
         divBtns.appendChild(addCompleteBtn(li, task));
         divBtns.appendChild(addDeleteBtn(li, task));
 
@@ -112,8 +121,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         return deleteBtn;
     }
-
-    
 
     function saveTaskToLocalStorage(task) {
         const tasks = JSON.parse(localStorage.getItem(`${currentUser}_tasks`)) || [];

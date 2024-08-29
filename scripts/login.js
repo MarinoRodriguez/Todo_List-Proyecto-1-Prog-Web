@@ -28,8 +28,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         // Si el login es exitoso, guarda el usuario actual en localStorage
-        saveToLocalStorage('currentUser', username);
+        localStorage.setItem('currentUser', username);
+        // console.log(localStorage.getItem("currentUser"));
         
+        // alert("nada");
         // Redirecciona a la página principal
         window.location.href = 'index.html';
     });

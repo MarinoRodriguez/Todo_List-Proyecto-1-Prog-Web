@@ -35,14 +35,36 @@ document.addEventListener('DOMContentLoaded', () => {
             password: password,
             createdAt: new Date().toISOString()
         };
+        
+        // Usa JSON.stringify sólo al guardar objetos complejos
+        saveToLocalStorage(username, newUser); 
 
-        localStorage.setItem(username, JSON.stringify(newUser));
+        // Transfiere las tareas del usuario "Invitado" al nuevo usuario registrado
+        const guestTasks = localStorage.getItem('Invitado_tasks');
+        if (guestTasks) {
+            // Asigna las tareas del invitado al nuevo usuario
+            localStorage.setItem(`${username}_tasks`, guestTasks);
+            // Elimina las tareas del usuario "Invitado"
+            localStorage.removeItem('Invitado_tasks');
+        }
 
         // Guarda el nombre de usuario como el usuario actual para iniciar sesión automáticamente
         localStorage.setItem('currentUser', username);
-
+        // console.log(localStorage.getItem("currentUser"));
+        
         // Redirige directamente a la página principal después del registro
-        alert('Registro exitoso. Iniciando sesión...');
+        alert('Registro exitoso...Redireccionando');
         window.location.href = 'index.html';
     });
 });
+
+// Guarda un valor en el localStorage
+function saveToLocalStorage(key, value) {
+    localStorage.setItem(key, JSON.stringify(value));  // JSON.stringify solo cuando guardas objetos
+}
+
+// Recupera un valor del localStorage
+function getFromLocalStorage(key) {
+    const value = localStorage.getItem(key);
+    return value ? JSON.parse(value) : null;
+}
