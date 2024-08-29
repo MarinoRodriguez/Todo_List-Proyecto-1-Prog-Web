@@ -1,0 +1,34 @@
+:root {
+    /* Variables de colores para facilitar cambios de diseño */
+    --color-primary: #477CCC;
+    --color-secondary: #BAD2F8;
+    --color-bg-nav: #535863;
+    --color-active: #6E90C3;
+    --color-task-bg: #73ACB4;
+    --color-task-completed-bg: #73B485;
+    --color-task-container-bg: #D9D9D9;
+    --color-muted: #6c757d;
+    --color-white: #fff;
+
+    /* Variables de fuentes para consistencia tipográfica */
+    --font-family-main: 'Berlin Sans FB', sans-serif;
+    --font-size-h1: 5.5rem;
+    --font-size-button: 1.2rem;
+    --font-size-task: 1.5rem;
+    --font-size-muted: 1.5rem;
+    --font-size-input: 1.2rem;
+
+    /* Variables de bordes y radios para control de esquinas redondeadas */
+    --border-radius-small: 0.9rem;
+    --border-radius-large: 1rem;
+
+    /* Variables de tamaños para ajustar proporciones */
+    --max-width-container: 800px;
+    --height-task-container: 400px;
+
+    /* Variables de espaciado para gestionar márgenes y padding */
+    --spacing-small: 10px;
+    --spacing-medium: 15px;
+    --spacing-large: 30px;
+    --spacing-extra-large: 50px;
+}

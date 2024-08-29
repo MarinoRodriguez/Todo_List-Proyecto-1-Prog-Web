@@ -1,0 +1,232 @@
+:root {
+    /* Variables de colores para facilitar cambios de diseño */
+    --color-primary: #477CCC;
+    --color-secondary: #BAD2F8;
+    --color-bg-nav: #535863;
+    --color-active: #6E90C3;
+    --color-task-bg: #73ACB4;
+    --color-task-completed-bg: #73B485;
+    --color-task-container-bg: #D9D9D9;
+    --color-muted: #6c757d;
+    --color-white: #fff;
+
+    /* Variables de fuentes para consistencia tipográfica */
+    --font-family-main: 'Berlin Sans FB', sans-serif;
+    --font-size-h1: 5.5rem;
+    --font-size-button: 1.2rem;
+    --font-size-task: 1.5rem;
+    --font-size-muted: 1.5rem;
+    --font-size-input: 1.2rem;
+
+    /* Variables de bordes y radios para control de esquinas redondeadas */
+    --border-radius-small: 0.9rem;
+    --border-radius-large: 1rem;
+
+    /* Variables de tamaños para ajustar proporciones */
+    --max-width-container: 800px;
+    --height-task-container: 400px;
+
+    /* Variables de espaciado para gestionar márgenes y padding */
+    --spacing-small: 10px;
+    --spacing-medium: 15px;
+    --spacing-large: 30px;
+    --spacing-extra-large: 50px;
+}
+
+/* Configuración de la fuente principal del sitio */
+body {
+    font-family: var(--font-family-main) !important;
+}
+
+/* Estilo del título principal, centrado y con margen inferior */
+h1 {
+    font-size: var(--font-size-h1);
+    text-align: center;
+    margin-bottom: var(--spacing-large);
+}
+
+/* Estilo para el botón de añadir tarea */
+#btn-add {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-radius: var(--border-radius-large);
+    font-size: var(--font-size-button);
+}
+
+/* Estilo para el mensaje de "No tienes tareas Pendientes" */
+#Empty p {
+    color: var(--color-muted);
+    font-size: var(--font-size-muted);
+    text-align: center;
+}
+
+/* Estilo para la barra de navegación */
+nav {
+    background-color: var(--color-bg-nav);
+}
+
+/* Estilo para los botones en la barra de navegación */
+nav .btn {
+    background-color: var(--color-secondary);
+}
+
+/* Estilo para el texto de la marca en la barra de navegación */
+nav .navbar-brand {
+    font-size: 1.2rem;
+}
+
+/* Estilo para el botón activo en la barra de navegación */
+nav .btn.active {
+    background-color: var(--color-active);
+    color: var(--color-white);
+}
+
+/* Estilo del contenedor principal centrado con un ancho máximo */
+.container {
+    max-width: var(--max-width-container);
+    margin: auto;
+    margin-top: 80px;
+}
+
+/* Estilo para el grupo de entrada de tareas */
+.input-group {
+    font-size: var(--font-size-input);
+}
+
+/* Estilo del campo de texto para añadir tareas */
+.input-group .input-task {
+    border-radius: var(--border-radius-small);
+    border-width: 0.1rem;
+    padding-left: var(--spacing-medium);
+    border-color: #7c7c7c;
+}
+
+/* Estilo del contenedor de tareas con altura fija y barra de desplazamiento */
+.task-container {
+    background-color: var(--color-task-container-bg);
+    border-radius: var(--border-radius-large);
+    padding: 12px;
+    height: var(--height-task-container);
+    overflow-y: auto;
+    align-items: center;
+}
+
+/* Estilo para los bordes redondeados de la primera y última tarea */
+.list-group-item:first-child, .list-group-item:last-child {
+    border-radius: var(--border-radius-large);
+}
+
+/* Eliminación del estilo de lista predeterminado y del padding */
+.task-container ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+/* Estilo para los elementos de la lista de tareas */
+.task-container li {
+    background-color: var(--color-task-bg);
+    color: var(--color-white);
+    font-size: var(--font-size-task);
+    margin-bottom: var(--spacing-small);
+    padding: var(--spacing-medium);
+    border-radius: var(--border-radius-large);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    flex-direction: column; /* Para pantallas pequeñas */
+}
+
+/* Estilo para las tareas completadas */
+.task-container li.completed {
+    background-color: var(--color-task-completed-bg);
+    text-decoration: line-through;
+}
+
+/* Estilo para el texto de las tareas */
+.task-container li p {
+    flex-grow: 1;
+    margin: 0 var(--spacing-medium);
+    word-wrap: break-word;
+    text-align: center; /* Centra el texto en pantallas pequeñas */
+}
+
+/* Contenedor para los botones de completar y eliminar tarea */
+.task-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: var(--spacing-small);
+}
+
+/* Estilo para el botón de completar tarea */
+.task-buttons .btn-complete {
+    margin-right: auto;
+}
+
+/* Estilo para el botón de eliminar tarea */
+.task-buttons .btn-delete {
+    margin-left: auto;
+}
+
+/* Estilo para las imágenes dentro de los botones */
+.task-buttons img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+/* Estilo para el input y botón en dispositivos móviles */
+@media (max-width: 768px) {
+    .input-group {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .input-group .input-task {
+        width: 100%; /* Input cubre el 100% */
+        margin-bottom: var(--spacing-small);
+    }
+
+    .input-group .btn {
+        width: 50%;
+    }
+}
+
+/* Estilo para pantallas más grandes */
+@media (min-width: 768px) {
+    .input-group .input-task {
+        width: 60%; /* Input ocupa el 60% en pantallas grandes */
+    }
+
+    .input-group .btn {
+        width: 30%;
+        margin-left: auto; /* Separa el botón del input */
+    }
+
+    .task-container li {
+        flex-direction: row; /* Cambia a una fila en pantallas grandes */
+    }
+
+    .task-container li p {
+        text-align: left;
+        margin-right: var(--spacing-medium);
+        flex-grow: 1;
+    }
+
+    .task-buttons {
+        width: auto; /* Los botones permanecen juntos */
+        margin-top: 0;
+    }
+
+    .task-buttons .btn-complete {
+        margin-right: var(--spacing-small); /* Espacio entre los botones */
+    }
+}
+
+/* Ajustes para pantallas muy pequeñas */
+@media (max-width: 412px) {
+    .input-group .btn {
+        width: 80%; /* Botón más ancho en pantallas pequeñas */
+    }
+}

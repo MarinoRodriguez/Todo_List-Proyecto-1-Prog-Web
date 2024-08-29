@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo List</title>
+    <!-- Incluyendo Bootstrap CSS para facilitar el diseño y la responsividad -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Hoja de estilos personalizada -->
+    <link rel="stylesheet" href="styles/variables.css">
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <!-- Barra de navegación fija en la parte superior -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <!-- Marca en la barra de navegación -->
+        <span class="navbar-brand" id="user">Invitado</span>
+        <!-- Botones en la barra de navegación alineados a la derecha -->
+        <div class="ml-auto">
+            <a href="index.html" class="btn active">ToDo List</a>
+            <a href="login.html" class="btn">Login</a>
+        </div>
+    </nav>
+
+    <!-- Contenedor principal con margen superior para evitar que el contenido quede oculto detrás de la barra de navegación -->
+    <div class="container my-5 py-5">
+        <!-- Título de la página -->
+        <h1>To Do List</h1>
+        <!-- Grupo de entrada para añadir nuevas tareas -->
+        <div class="input-group mb-4">
+            <!-- Campo de texto para escribir una nueva tarea -->
+            <input type="text" class="input-task" placeholder="Agregar Tarea..." id="input">
+            <!-- Botón para añadir la tarea a la lista -->
+            <button id="btn-add" class="btn">Añadir a la lista</button>
+        </div>
+        <!-- Contenedor para la lista de tareas -->
+        <div class="task-container">
+            <!-- Lista donde se mostrarán las tareas -->
+            <ul id="li-container" class="list-group">
+                <!-- Aquí se añadirán dinámicamente las tareas -->
+            </ul>
+            <!-- Mensaje que se muestra cuando no hay tareas pendientes -->
+            <div id="Empty" class="mt-4">
+                <p class="text-muted">No tienes tareas Pendientes.</p> 
+            </div>
+        </div>
+    </div>
+
+    <!-- Archivo JavaScript personalizado para manejar la lógica de la aplicación -->
+    <script src="scripts/app.js"></script>
+    <!-- Dependencias de Bootstrap y jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
