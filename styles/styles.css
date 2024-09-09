@@ -43,14 +43,20 @@ h1 {
     font-size: var(--font-size-h1);
     text-align: center;
     margin-bottom: var(--spacing-large);
+    font-weight: normal; /* Quitando el bold */
 }
 
 /* Estilo para el botón de añadir tarea */
-#btn-add {
+#btn-add,
+#btn-create-task {
     background-color: var(--color-primary);
     color: var(--color-white);
     border-radius: var(--border-radius-large);
     font-size: var(--font-size-button);
+    border: none;
+    padding: 0.5rem 1rem;
+    display: block;
+    margin: auto; /* Siempre centrado */
 }
 
 /* Estilo para el mensaje de "No tienes tareas Pendientes" */
@@ -58,6 +64,7 @@ h1 {
     color: var(--color-muted);
     font-size: var(--font-size-muted);
     text-align: center;
+    font-weight: normal; /* Quitando el bold */
 }
 
 /* Estilo para la barra de navegación */
@@ -68,11 +75,14 @@ nav {
 /* Estilo para los botones en la barra de navegación */
 nav .btn {
     background-color: var(--color-secondary);
+    color: var(--color-white);
+    border: none;
 }
 
 /* Estilo para el texto de la marca en la barra de navegación */
 nav .navbar-brand {
     font-size: 1.2rem;
+    font-weight: normal; /* Quitando el bold */
 }
 
 /* Estilo para el botón activo en la barra de navegación */
@@ -91,6 +101,9 @@ nav .btn.active {
 /* Estilo para el grupo de entrada de tareas */
 .input-group {
     font-size: var(--font-size-input);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 /* Estilo del campo de texto para añadir tareas */
@@ -99,6 +112,8 @@ nav .btn.active {
     border-width: 0.1rem;
     padding-left: var(--spacing-medium);
     border-color: #7c7c7c;
+    flex-grow: 1;
+    margin-right: var(--spacing-small);
 }
 
 /* Estilo del contenedor de tareas con altura fija y barra de desplazamiento */
@@ -111,44 +126,79 @@ nav .btn.active {
     align-items: center;
 }
 
-/* Estilo para los bordes redondeados de la primera y última tarea */
-.list-group-item:first-child, .list-group-item:last-child {
-    border-radius: var(--border-radius-large);
-}
-
 /* Eliminación del estilo de lista predeterminado y del padding */
 .task-container ul {
     padding: 0;
     list-style-type: none;
+    margin: 0;
 }
 
 /* Estilo para los elementos de la lista de tareas */
-.task-container li {
+.task-container li, .task-container li:first-child, .task-container li:last-child {
     background-color: var(--color-task-bg);
     color: var(--color-white);
-    font-size: var(--font-size-task);
     margin-bottom: var(--spacing-small);
     padding: var(--spacing-medium);
-    border-radius: var(--border-radius-large);
+    border-radius: var(--border-radius-large); /* Redondeado */
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
     position: relative;
-    flex-direction: column; /* Para pantallas pequeñas */
+    font-weight: normal;
 }
 
 /* Estilo para las tareas completadas */
 .task-container li.completed {
     background-color: var(--color-task-completed-bg);
-    text-decoration: line-through;
 }
 
-/* Estilo para el texto de las tareas */
-.task-container li p {
-    flex-grow: 1;
-    margin: 0 var(--spacing-medium);
-    word-wrap: break-word;
-    text-align: center; /* Centra el texto en pantallas pequeñas */
+.task-container li.completed .task-text {
+    text-decoration: line-through; /* Solo el título tachado */
+}
+
+/* Estilo para el encabezado de las tareas (título y fecha) */
+.task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Ajustes para móviles */
+}
+
+/* Contenedor del título */
+.task-title-container {
+    font-size: 1.8rem;
+    color: var(--color-white);
+    text-align: left;
+    font-weight: normal;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+/* Contenedor de la fecha y el icono */
+.task-date-container {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    /* color: var(--color-muted); */
+    font-weight: normal;
+    text-align: right;
+}
+
+/* Ajuste del ícono de calendario */
+.calendar-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    /* background-color: var(--color-white);
+    padding: 0.2rem; */
+    border-radius: 0.5rem;
+}
+
+/* Estilo para la descripción de las tareas */
+.task-desc {
+    font-size: 1.5rem;
+    margin-top: var(--spacing-small);
+    color: var(--color-white);
+    text-align: justify;
 }
 
 /* Contenedor para los botones de completar y eliminar tarea */
@@ -159,74 +209,94 @@ nav .btn.active {
     margin-top: var(--spacing-small);
 }
 
-/* Estilo para el botón de completar tarea */
-.task-buttons .btn-complete {
-    margin-right: auto;
-}
-
-/* Estilo para el botón de eliminar tarea */
+/* Estilo para los botones de completar y eliminar */
+.task-buttons .btn-complete,
 .task-buttons .btn-delete {
-    margin-left: auto;
+    flex-basis: 48%;
+    background-color: transparent;
+    color: var(--color-white);
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Estilo para las imágenes dentro de los botones */
-.task-buttons img {
-    width: 20px;
-    height: 20px;
-    object-fit: contain;
+/* Botón de eliminar cuando la tarea está completada */
+.task-container li.completed .btn-delete {
+    flex-basis: 100%;
+    margin-top: var(--spacing-small);
 }
 
-/* Estilo para el input y botón en dispositivos móviles */
+/* Colores para los botones */
+.task-buttons .btn-complete {
+    background-color: #28a745; /* Verde para completar */
+}
+
+.task-buttons .btn-delete {
+    background-color: #dc3545; /* Rojo para eliminar */
+}
+
+/* Ajustes responsivos */
 @media (max-width: 768px) {
-    .input-group {
+    .task-header {
         flex-direction: column;
         align-items: center;
+        text-align: center;
     }
 
-    .input-group .input-task {
-        width: 100%; /* Input cubre el 100% */
-        margin-bottom: var(--spacing-small);
+    .task-title-container {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 10px;
     }
 
-    .input-group .btn {
-        width: 50%;
+    .task-date-container {
+        width: 100%;
+        justify-content: center;
     }
 }
 
-/* Estilo para pantallas más grandes */
-@media (min-width: 768px) {
-    .input-group .input-task {
-        width: 60%; /* Input ocupa el 60% en pantallas grandes */
+@media (min-width: 769px) {
+    .task-header {
+        flex-direction: row; /* En pantallas grandes, alineado en una fila */
+        align-items: center;
+        justify-content: space-between;
     }
 
-    .input-group .btn {
-        width: 30%;
-        margin-left: auto; /* Separa el botón del input */
-    }
-
-    .task-container li {
-        flex-direction: row; /* Cambia a una fila en pantallas grandes */
-    }
-
-    .task-container li p {
+    .task-title-container {
+        width: auto; /* El título ocupa solo el espacio que necesita */
         text-align: left;
-        margin-right: var(--spacing-medium);
-        flex-grow: 1;
+        margin-bottom: 0;
     }
 
-    .task-buttons {
-        width: auto; /* Los botones permanecen juntos */
-        margin-top: 0;
-    }
-
-    .task-buttons .btn-complete {
-        margin-right: var(--spacing-small); /* Espacio entre los botones */
+    .task-date-container {
+        justify-content: flex-end; /* Fecha e icono alineados a la derecha */
     }
 }
 
-/* Ajustes para pantallas muy pequeñas */
-@media (max-width: 412px) {
-    .input-group .btn {
-        width: 80%; /* Botón más ancho en pantallas pequeñas */
-    }
+/* Estilo para el botón de crear nueva tarea */
+#btn-new-task {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-radius: var(--border-radius-large);
+    font-size: var(--font-size-button);
+    display: block;
+    margin: auto;
+    margin-bottom: var(--spacing-large);
+    border: none;
+    padding: 0.5rem 1rem;
+}
+
+/* Estilo para el footer */
+footer {
+    text-align: center;
+    margin-top: var(--spacing-extra-large);
+    font-size: var(--font-size-muted);
+    color: var(--color-muted);
+    padding: var(--spacing-medium);
+    background-color: var(--color-bg-nav);
+    border-top: 1px solid var(--color-muted);
 }

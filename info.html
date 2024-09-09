@@ -3,50 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Basada en Sketch</title>
-    <!-- Bootstrap CSS -->
+    <title>Información - ToDo List</title>
+    <!-- Incluyendo Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Hoja de estilos personalizada -->
     <link rel="stylesheet" href="styles/variables.css">
     <link rel="stylesheet" href="styles/styles.css">
-    <link rel="stylesheet" href="styles/loginStyles.css">
 </head>
 <body>
-    <!-- Barra de navegación -->
+    <!-- Barra de navegación fija en la parte superior -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <span class="navbar-brand" id="user">Invitado</span>
         <div class="ml-auto">
             <a href="index.html" class="btn">ToDo List</a>
-            <a href="info.html" class="btn">Información</a>
-            <a id="login" href="login.html" class="btn active">Login</a>
+            <a href="info.html" class="btn active">Información</a>
+            <a id="login" href="login.html" class="btn">Login</a>
         </div>
     </nav>
 
-    <!-- Contenedor central -->
+    <!-- Contenedor principal para la información -->
     <div class="container my-5 py-5">
-        <h1>Login</h1>
-        <!-- Formulario de login -->
-        <form>
-            <div class="form-group">
-                <label for="username">Nombre de usuario</label>
-                <input type="text" class="form-control" id="username" placeholder="Nombre de usuario">
-            </div>
-            <div class="form-group">
-                <label for="password">Contraseña</label>
-                <input type="password" class="form-control" id="password" placeholder="Contraseña">
-            </div>
-            <button type="submit" class="btn btn-primary btn-block" id="loginBtn">Iniciar Sesión</button>
-        </form>
-        <div class="text-center mt-4">
-            <p>No tienes cuenta? <a href="register.html">Crea una nueva</a></p>
-        </div>
+        <!-- Título de la página de información -->
+        <h1>Información sobre el sitio</h1>
+        <p>Este sitio web fue creado como parte del taller de Programación Web impartido por el Programa de Educación Continua en el ITLA, bajo la guía del profesor Guillermo Hernandez. El propósito de este proyecto es ofrecer una práctica en el desarrollo de aplicaciones web utilizando tecnologías modernas como HTML, CSS, JavaScript y Bootstrap.</p>
+        
+        <h2>Sobre mí</h2>
+        <p>Mi nombre es Marino Rodriguez, soy un entusiasta del desarrollo web y actualmente estoy profundizando mis conocimientos en programación web a través de este taller. Este proyecto es un reflejo de mis aprendizajes y mi pasión por el diseño y desarrollo de aplicaciones web.</p>
     </div>
+
+    <!-- Footer con información de derechos de autor -->
     <footer class="bg-dark text-white text-center py-3">
         <p>&copy; 2024 Marino Rodriguez para el taller de Programación Web impartido por el Programa de Educación Continua en el ITLA por Guillermo Hernandez, creada el 27 de agosto del 2024.</p>
     </footer>
     <script src="scripts/navBarLogic.js"></script>
-    <script src="scripts/login.js"></script>
-    <!-- Bootstrap JS and dependencies -->
+
+    <!-- Dependencias de Bootstrap y jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

@@ -14,10 +14,11 @@
 <body>
     <!-- Barra de navegación -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <span class="navbar-brand">Invitado</span>
+        <span class="navbar-brand" id="user">Invitado</span>
         <div class="ml-auto">
             <a href="index.html" class="btn">ToDo List</a>
-            <a href="login.html" class="btn">Login</a>
+            <a href="info.html" class="btn">Información</a>
+            <a id="login" href="login.html" class="btn active">Login</a>
         </div>
     </nav>
 
@@ -44,7 +45,10 @@
             <p>¿Ya tienes cuenta? <a href="login.html">Inicia Sesión</a></p>
         </div>
     </div>
-
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2024 Marino Rodriguez para el taller de Programación Web impartido por el Programa de Educación Continua en el ITLA por Guillermo Hernandez, creada el 27 de agosto del 2024.</p>
+    </footer>
+    <script src="scripts/navBarLogic.js"></script>
     <script src="scripts/register.js"></script>
 
     <!-- Bootstrap JS and dependencies -->
